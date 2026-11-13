@@ -1,0 +1,7 @@
+cena_tekst = input("Kolika je cena kafe?")
+cena = int(cena_tekst)
+print(f"Cena kafe je {cena}")
+kolicina_tekst = input("Kolika je kolicina kafe?")
+kolicina = int(kolicina_tekst)
+print(f"Kolicina kafe je {kolicina}")
+print(f"Ukupan racun je {cena*kolicina}")
