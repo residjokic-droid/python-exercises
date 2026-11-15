@@ -1,5 +1,6 @@
 import sys
 ukupan_racun = 0
+stavke = []
 while True:
     stavka = input("Ukucaj naziv stavke (odustani za izlaz, gotovo za kraj):")
     if stavka.lower() == "odustani":
@@ -24,13 +25,17 @@ while True:
                 print(f"Uneli ste neispravan unos za kolicinu")
         except ValueError:
             print(f"Morate uneti ceo broj za kolicinu")
+    stavke.append({"naziv": stavka, "cena": cena, "kolicina": kolicina})
     racun = (cena*kolicina)
     print(f"Racun za {stavka} iznosi: {racun}")
     ukupan_racun = (ukupan_racun+racun)
-    manji_popust = (ukupan_racun*10/100)
-    veci_popust = (ukupan_racun*20/100)
-    ukupan_racun_manji_popust = (ukupan_racun-manji_popust)
-    ukupan_racun_veci_popust = (ukupan_racun-veci_popust)
+manji_popust = (ukupan_racun*10/100)
+veci_popust = (ukupan_racun*20/100)
+ukupan_racun_manji_popust = (ukupan_racun-manji_popust)
+ukupan_racun_veci_popust = (ukupan_racun-veci_popust)
+for pice in stavke:
+    iznos = pice["cena"] * pice["kolicina"]
+    print(f"{pice['naziv']}: {pice['cena']} * {pice['kolicina']} = {iznos}")
 if ukupan_racun <=1000:
     print(f"Ne dobijate popust, Vas iznos za placanje iznosi: {ukupan_racun:.2f}")
 elif ukupan_racun <=3000:
