@@ -1,4 +1,14 @@
 import sys
+def unesi_pozitivan_broj(poruka):
+    while True:
+        try:
+            broj = int(input(poruka))
+            if broj <= 0:
+                print("Broj mora biti veci od 0!")
+            else:
+                return broj
+        except ValueError:
+            print("Moras uneti ceo broj i ne smes tekst!")
 ukupan_racun = 0
 stavke = []
 while True:
@@ -7,24 +17,8 @@ while True:
         sys.exit()
     if stavka.lower() == "gotovo":
         break
-    cena = 0
-    while cena <=0:
-        cena_tekst = input(f"Kolika je cena {stavka}: ")
-        try:
-            cena = int(cena_tekst)
-            if cena <=0:
-                print(f"Neispravan unos cene za {stavka}")
-        except ValueError:
-            print(f"Moras uneti ceo broj za cenu")
-    kolicina = 0
-    while kolicina <=0:
-        kolicina_tekst = input(f"Kolika je kolicina za {stavka}: ")
-        try:
-            kolicina = int(kolicina_tekst)
-            if kolicina <=0:
-                print(f"Uneli ste neispravan unos za kolicinu")
-        except ValueError:
-            print(f"Morate uneti ceo broj za kolicinu")
+    cena = unesi_pozitivan_broj(f"Kolika je cena za {stavka}: ")
+    kolicina = unesi_pozitivan_broj(f"Kolika je kolicina za {stavka}: ")
     stavke.append({"naziv": stavka, "cena": cena, "kolicina": kolicina})
     racun = (cena*kolicina)
     print(f"Racun za {stavka} iznosi: {racun}")
